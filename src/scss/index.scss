@@ -1,0 +1,183 @@
+html { 
+	font-size: 62.5%; // 10px
+	height: 100%;
+}
+
+body {
+	height: 100%;
+}
+
+.Wrapper {
+	height: 100%;
+	background-image: inline-image('../img/dogu.jpg');
+    animation: bgAnimation 2s ease 1s infinite forwards;
+	background-blend-mode : overlay;
+	background-size: cover;
+}
+
+.Component {
+	margin: 20px 0;
+
+	&__heading {
+		font-size: 2rem;
+		margin: 10px 0;
+		color: green;
+	}
+
+	&__headingSubText {
+		font-size: 1.2rem;
+		font-weight: normal;
+	}
+}
+
+.Header {
+	&__logo {
+		margin: 0 auto;
+		width: 320px;
+		height: 120px;
+		background-image: inline-image('../img/logo.png');
+		background-size: 320px 120px;
+
+		animation-name: skew;
+		animation-duration: 10s;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+		animation-fill-mode: backwards;
+	}
+}
+
+.Contents {
+	margin: 0 20px;
+	font-size: 1.6rem;
+	line-height: 1.4;
+	overflow: hidden;
+}
+
+.MainVisual {
+	background-color: white;
+
+	&__visual {
+		width: 100%;
+		padding-bottom: 30%;
+		background-image: inline-image('../img/MainVisual.jpg');
+		background-size: cover;
+		background-color: white;
+
+		animation-name: mainAnimation;
+		animation-duration: 5s;
+		animation-timing-function: ease;
+		animation-iteration-count: infinite;
+		animation-fill-mode: backwards;
+	}	
+}
+
+.AccessCounter {
+	//display: inline-block;
+	font-size: 1.4rem;
+	font-style: italic;
+
+	animation-name: marquee;
+	animation-duration: 10s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-fill-mode: backwards;	
+
+	&__val {
+		font-weight: bold;
+	}
+}
+
+.MainMenu {
+	&__date {
+		font-size: 1.2rem;
+	}
+
+	&__menu {
+		margin: 0 40px;
+
+		li {
+			margin: 5px 0;
+			font-size: 1.4rem;
+		}
+	}
+}
+
+.Footer {
+	&__copyright{
+		font-size: 1.2rem;
+		text-align: center;
+	}
+}
+
+// Animation
+
+@keyframes bgAnimation {
+	0% {
+		background-color: red;
+	}
+ 	33% {
+ 		background-color: orange;
+ 	}
+ 	66% {
+ 		background-color: purple;
+ 	}
+	100% {
+		background-color: red;
+	}
+}
+
+@keyframes mainAnimation {
+	0% {
+		background-position: 0 100%;
+		opacity: 0;
+	}
+	100% {
+		background-position: 0 0%;
+		opacity: 1;
+	}	
+}
+
+@keyframes skew {
+	0% {
+		transform: rotate(0deg);
+	}
+	90% {
+		transform: rotate(0deg);
+	}
+ 	95% {
+		transform: rotate(180deg);
+ 	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes marquee {
+	0% {
+		transform: translate(100%);
+	}
+	100% {
+		transform: translate(-100%);
+	}
+}
+// PC View
+@media screen and (min-width: 720px)  {
+
+.Component {
+	margin: 50px 0;
+}
+
+.Header {
+	&__logo {
+		width: 500px;
+		height: 200px;
+		background-size: 500px 200px;
+	}
+}
+
+.Contents {
+	width: 70%;
+	margin: 0 auto;
+}
+
+}

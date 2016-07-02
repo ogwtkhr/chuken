@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, user-scalable=yes">
+	<title>バイバイン</title>
+</head>
+<body>
+<input type="checkbox" name="mode" class="js-checkbox">
+<label for="mode">早送り</label>
+<div class="js-target" style="margin-top: 20px;"></div>
+<!-- /.js-target -->
+
+<script type="text/javascript">
+(function(window){
+
+var INTERVAL_DEFAULT =  1000 * 60 * 5; // 5分
+var INTERVAL_HEIGHTSPEED = 1000 * 10; //10秒
+
+var interval = INTERVAL_DEFAULT;
+
+var domTarget = window.document.querySelector('.js-target');
+var checkbox = window.document.querySelector('.js-checkbox');
+
+var model = {};
+var view = function(model){
+	var hash = [];
+	for (var i = 0; i < model.total; i++) {
+		hash.push(model.string);
+	};
+	domTarget.innerHTML = hash.join(' ');
+};
+
+var update = function(model){
+	return {
+		total: model.total * 2,
+		string: model.string
+	}
+}
+
+var render = function(){
+	view(model);
+	model = update(model);
+	window.setTimeout(render, interval);
+};
+
+var init = function(){
+	model = {
+		total: 1,
+		string: 'バイバイン'
+	};
+	render(model);
+
+	checkbox.addEventListener('click', function(e){
+		var isChecked = e.target.checked;
+		if(isChecked) {
+			interval = INTERVAL_HEIGHTSPEED;
+			window.clearTimeout(render);
+			render();
+		} else {
+			interval = INTERVAL_DEFAULT;
+		}
+
+	});
+};
+
+init();
+
+})(this);
+</script>
+
+</body>
+</html>

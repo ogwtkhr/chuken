@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, user-scalable=yes">
+	<title>ほぼ週刊 インターネット中小企業研究会</title>
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+<div class="Wrapper">
+
+<div class="Header">
+	<div class="Header__logo">
+	</div>
+	<!-- /.Header__logo -->
+</div>
+<!-- /.Header -->
+<div class="Contents">
+	<div class="MainVisual">
+		<div class="MainVisual__visual">
+		</div>
+		<!-- /.MainVisual__visual -->
+	</div>
+	<!-- /.MainVisual -->
+	<div class="AccessCounter Component">
+		こんにちは。あなたは<span class="AccessCounter__val js-AccessCounter__val"></span>番目のお客様です
+	</div>
+	<!-- /.AccessCounter -->
+	<div class="Component Concept">
+		<h1 class="Component__heading">
+			創刊の辞
+			<span class="Component__headingSubText">Soukannoji</span>
+		</h1>
+		<p>インターネットの可能性を中小企業研究の力で開拓し、諸科学と人類の発展に貢献するものである</p>
+	</div>
+	<!-- /.Concept -->
+	<div class="Component MainMenu">
+		<h1 class="Component__heading">
+			メイン・メニュー
+			<span class="Component__headingSubText">MeinnMenyuu</span>
+		</h1>
+		<p class="MainMenu__date">2016/6/22 週 更新</p>
+		<ul class="MainMenu__menu">
+			<li><a href="./momotaro.html">桃太郎</a></li>
+			<li><a href="./baibain.html">バイバイン</a></li>
+			<li><a href="./contents/teretabies/">テレ旅ーズ</a></li>
+			<li><a href="./contents/teretabies/">今日言えたいいこと</a></li>
+			<li><a href="./contents/teretabies/">がんばるくん 第1回</a></li>
+			<li><a href="./contents/teretabies/">データ・ビジュアライゼーション</a></li>
+			<li><a href="./contents/teretabies/">1週間でもっともひもじかったもの（6/13週）</a></li>
+		</ul>
+		<!-- /.MainMenu__menu -->
+	</div>
+	<!-- /.MainMenu -->
+</div>
+<!-- /.Contents -->
+<div class="Footer">
+	<p class="Footer__copyright">2016 chushokigyo kenkyuukai</p>
+</div>
+<!-- /.Footer -->
+
+</div>
+<!-- /.Wrapper -->
+
+<script type="text/javascript">
+(function(window){
+
+var STORAGE_KEY = 'accessCounter';
+var targetDom = window.document.querySelector('.js-AccessCounter__val');
+
+var getCount = function(){
+	var localStorageData = window.localStorage.getItem(STORAGE_KEY) || '0';
+	console.log(localStorageData)
+	return parseInt(localStorageData, 10);
+};
+var setCount = function(value){
+	window.localStorage.setItem(STORAGE_KEY, value);
+};
+
+var count = getCount();
+
+targetDom.innerHTML = count;
+if(!isNaN(count)) {
+	setCount(count + 1);
+} 
+
+})(this);
+</script>
+
+</body>
+</html>
