@@ -3,7 +3,7 @@ var sass = require('gulp-sass');
 var inlineImage = require('gulp-inline-image');
 var plumber = require('gulp-plumber');
 var browserSync = require('browser-sync').create();
-var autoprefixer = require('autoprefixer');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('browser-sync', () => {
   browserSync.init({
@@ -18,13 +18,13 @@ gulp.task('sass', () => {
     .pipe(plumber())
     .pipe(sass())
     .pipe(inlineImage())
-//    .pipe(autoprefixer())
+    .pipe(autoprefixer())
     .pipe(gulp.dest('./build/css'))
 });
 
 gulp.task('html', () => {
   gulp.src('./src/html/*.html')
-    .pipe(gulp.dest('./build/html'))
+    .pipe(gulp.dest('./build'))
 });
 
 gulp.task('reload', () => {
